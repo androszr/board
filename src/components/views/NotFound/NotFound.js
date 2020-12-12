@@ -32,7 +32,7 @@ Component.propTypes = {
 //const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  //Component as NotFound,
+  Component as NotFound,
   //Container as NotFound,
   Component as NotFoundComponent,
 };

@@ -32,7 +32,7 @@ Component.propTypes = {
 //const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  //Component as PostEdit,
+  Component as PostEdit,
   //Container as PostEdit,
   Component as PostEditComponent,
 };

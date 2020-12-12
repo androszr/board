@@ -7,12 +7,12 @@ import { CssBaseline } from '@material-ui/core';
 
 import { store } from './redux/store';
 
-import { MainLayoutComponent } from './components/layout/MainLayout/MainLayout';
-import { HomepageComponent } from './components/views/Homepage/Homepage';
-import { PostComponent } from './components/views/Post/Post';
-import { PostEditComponent } from './components/views/PostEdit/PostEdit';
-import { PostAddComponent } from './components/views/PostAdd/PostAdd';
-import { NotFoundComponent } from './components/views/NotFound/NotFound';
+import { MainLayout } from './components/layout/MainLayout/MainLayout';
+import { Homepage } from './components/views/Homepage/Homepage';
+import { Post } from './components/views/Post/Post';
+import { PostEdit } from './components/views/PostEdit/PostEdit';
+import { PostAdd } from './components/views/PostAdd/PostAdd';
+import { NotFound } from './components/views/NotFound/NotFound';
 
 const theme = createMuiTheme({
   palette: {
@@ -26,15 +26,15 @@ const App = () => (
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <MainLayoutComponent>
+          <MainLayout>
             <Switch>
-              <Route exact path='/' component={HomepageComponent} />
-              <Route exact path='/post/add' component={PostAddComponent} />
-              <Route exact path='/post/:id' component={PostComponent} />
-              <Route exact path='/post/:id/edit' component={PostEditComponent} />
-              <Route path='*' component={NotFoundComponent} />
+              <Route exact path='/' component={Homepage} />
+              <Route exact path='/post/add' component={PostAdd} />
+              <Route exact path='/post/:id' component={Post} />
+              <Route exact path='/post/:id/edit' component={PostEdit} />
+              <Route path='*' component={NotFound} />
             </Switch>
-          </MainLayoutComponent>
+          </MainLayout>
         </ThemeProvider>
       </StylesProvider>
     </BrowserRouter>
