@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
+import {Link} from 'react-router-dom';
+
 import styles from './NotFound.module.scss';
 
+import Button from '@material-ui/core/Button';
 
 //import { connect } from 'react-redux';
 //import { reduxSelector, reduxActionCreator } from '../../../redux/globalRedux';
 
 const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
-    <h2>NotFound</h2>
+    <p>404 - Not found</p>
+    <Button className={styles.link} component={Link} to={`/`}>Go back to Homepage</Button>
     {children}
   </div>
 );
