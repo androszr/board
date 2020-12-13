@@ -13,13 +13,19 @@ import Button from '@material-ui/core/Button';
 import {NavLink} from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getAll } from '../../../redux/postsRedux';
+import { getAll, fetchPublished } from '../../../redux/postsRedux';
 
 class Component extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     posts: PropTypes.array,
+    fetchPublishedPosts: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const { fetchPublishedPosts } = this.props;
+    fetchPublishedPosts();
   }
 
   render() {
@@ -32,7 +38,7 @@ class Component extends React.Component {
           {posts.map(post => (
             <Card
               variant="outlined"
-              key={post.id}
+              key={post._id}
               className={styles.card}
             >
               <CardContent>
@@ -46,7 +52,7 @@ class Component extends React.Component {
                   color="primary"
                   className={styles.button}
                   component={NavLink}
-                  exact to={`/post/${post.id}`}
+                  exact to={`/post/${post._id}`}
                 >
                 More...
                 </Button>
@@ -61,20 +67,15 @@ class Component extends React.Component {
   }
 }
 
-
-
-
-
 const mapStateToProps = state => ({
   posts: getAll(state),
 });
 
+const mapDispatchToProps = dispatch => ({
+  fetchPublishedPosts: () => dispatch(fetchPublished()),
+});
 
-//const mapDispatchToProps = dispatch => ({
-//  someAction: arg => dispatchEvent(reduxActionCreator(arg)),
-// });
-
-const HomepageContainer = connect(mapStateToProps)(Component);
+const HomepageContainer = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   //Component as Homepage,

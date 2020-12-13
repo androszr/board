@@ -1,3 +1,4 @@
+import Axios from 'axios';
 /* selectors */
 export const getAll = ({posts}) => posts.data;
 
@@ -8,6 +9,22 @@ export const getPostById = ({posts}, postId) => {
   } else {
     return {};
   }
+};
+
+/* thunk creators */
+export const fetchPublished = () => {
+  return (dispatch, getState) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get('http://localhost:9000/api/posts')
+      .then(res => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
 };
 
 /* action name creator */
