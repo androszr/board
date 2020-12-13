@@ -35,8 +35,10 @@ class Component extends React.Component {
               key={post.id}
               className={styles.card}
             >
-              <CardContent>{post.title}</CardContent>
-              <CardContent>{post.content}</CardContent>
+              <CardContent>
+                <p>Title: {post.title}</p>
+                <p>Content: {post.content}</p>
+              </CardContent>
               <CardActions>
                 <Button
                   variant="outlined"
